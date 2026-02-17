@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <style>body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; }</style>
+</head>
+<body>
+    <div id="map">Lade Kundenstandort...</div>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const addr = params.get('address');
+        const key = params.get('key');
+
+        if (addr && key && !addr.includes('$') && !key.includes('$')) {
+            const mapUrl = `https://www.google.com/maps/embed/v1/place?key=${key}&q=${encodeURIComponent(addr)}`;
+            document.getElementById('map').innerHTML = `<iframe src="${mapUrl}" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>`;
+        } else {
+            document.body.innerHTML = "<div style='padding:20px; font-family:sans-serif;'>Fehler: Adresse oder API-Key fehlen in der URL.</div>";
+        }
+    </script>
+</body>
+</html>
