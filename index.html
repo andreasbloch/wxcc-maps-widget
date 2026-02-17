@@ -13,7 +13,7 @@
 
         if (addr && key && !addr.includes('$') && !key.includes('$')) {
             const mapUrl = `https://www.google.com/maps/embed/v1/place?key=${key}&q=${encodeURIComponent(addr)}`;
-            document.getElementById('map').innerHTML = `<iframe src="${mapUrl}" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>`;
+            document.getElementById('map').innerHTML = `<iframe src="${mapUrl}" width="200" height="200" style="border:0;" allowfullscreen></iframe>`;
         } else {
             document.body.innerHTML = "<div style='padding:20px; font-family:sans-serif;'>Fehler: Adresse oder API-Key fehlen in der URL.</div>";
         }
